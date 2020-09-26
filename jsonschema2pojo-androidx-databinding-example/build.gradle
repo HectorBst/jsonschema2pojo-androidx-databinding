@@ -1,0 +1,57 @@
+
+group = 'com.github.hectorbst.jsonschema2pojo'
+version = '1.0.0-SNAPSHOT'
+
+buildscript {
+	repositories {
+		google()
+		jcenter()
+		mavenLocal()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:4.0.1'
+		classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2'
+		classpath 'com.github.hectorbst.jsonschema2pojo:jsonschema2pojo-androidx-databinding:1.0.0-SNAPSHOT'
+	}
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'jsonschema2pojo'
+
+android {
+	compileSdkVersion 29
+
+	buildFeatures {
+		dataBinding = true
+	}
+}
+
+repositories {
+	google()
+	jcenter()
+}
+
+jsonSchema2Pojo {
+	source = project.files("src/schema")
+	targetPackage = 'org.jsonschema2pojo.androidx.databinding.example'
+	generateBuilders = false
+	useInnerClassBuilders = false
+	includeAdditionalProperties = false
+	useDoubleNumbers = true
+	useLongIntegers = true
+	dateType = 'java.time.LocalDate'
+	timeType = 'java.time.OffsetTime'
+	dateTimeType = 'java.time.OffsetDateTime'
+	removeOldOutput = true
+	annotationStyle = 'none'
+	useOptionalForGetters = false
+	usePrimitives = true
+	formatTypeMapping = [
+			'int32': 'java.lang.Integer',
+			'int64': 'java.lang.Long',
+			'float32': 'java.lang.Float',
+			'float64': 'java.lang.Double',
+			'real': 'java.math.BigDecimal'
+	]
+	customRuleFactory = 'org.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingRuleFactory'
+}

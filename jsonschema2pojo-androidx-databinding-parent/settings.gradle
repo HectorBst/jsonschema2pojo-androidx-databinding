@@ -1,0 +1,5 @@
+
+rootProject.name = 'jsonschema2pojo-androidx-databinding-parent'
+
+includeFlat 'jsonschema2pojo-androidx-databinding'
+includeFlat 'jsonschema2pojo-androidx-databinding-example'

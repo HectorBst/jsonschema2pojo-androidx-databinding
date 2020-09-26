@@ -1,0 +1,72 @@
+{
+	"$schema": "https://json-schema.org/draft-07/schema#",
+	"title": "Sample entity",
+	"x-cb-document": true,
+	"properties": {
+		"oneString": {
+			"title": "A sample string",
+			"type": "string"
+		},
+		"oneInteger": {
+			"title": "A sample integer",
+			"type": "integer",
+			"format": "int32"
+		},
+		"oneLong": {
+			"title": "A sample long",
+			"type": "integer",
+			"format": "int64"
+		},
+		"oneFloat": {
+			"title": "A sample float",
+			"type": "number",
+			"format": "float32"
+		},
+		"oneDouble": {
+			"title": "A sample double",
+			"type": "number",
+			"format": "float64"
+		},
+		"oneReal": {
+			"title": "A sample big decimal",
+			"type": "number",
+			"format": "real"
+		},
+		"oneSubObject": {
+			"title": "A sample sub object",
+			"type": "object",
+			"properties": {
+				"oneAnotherString": {
+					"title": "An other sample string",
+					"type": "string"
+				}
+			}
+		},
+		"oneList": {
+			"title": "A sample list",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"oneListOfList": {
+			"title": "A sample list of list",
+			"type": "array",
+			"items": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				}
+			}
+		},
+		"oneEnum": {
+			"title": "A sample enum",
+			"type": "string",
+			"enum": [
+				"test1",
+				"test2",
+				"test3"
+			]
+		}
+	}
+}
