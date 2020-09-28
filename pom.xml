@@ -7,6 +7,32 @@
 	<groupId>com.github.hectorbst.jsonschema2pojo</groupId>
 	<artifactId>jsonschema2pojo-androidx-databinding</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>jsonschema2pojo Android Data Binding</name>
+	<description>jsonschema2pojo extension to generate Android Data Binding specific POJOs</description>
+	<url>https://github.com/hectorbst/jsonschema2pojo-androidx-databinding</url>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Hector Basset</name>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/hectorbst/jsonschema2pojo-androidx-databinding</connection>
+		<developerConnection>scm:git:ssh://github.com:hectorbst/jsonschema2pojo-androidx-databinding
+		</developerConnection>
+		<url>https://github.com/hectorbst/jsonschema2pojo-androidx-databinding</url>
+	</scm>
 
 	<properties>
 		<maven.compiler.source>8</maven.compiler.source>
