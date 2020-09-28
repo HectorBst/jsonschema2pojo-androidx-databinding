@@ -10,11 +10,11 @@ import org.jsonschema2pojo.rules.Rule;
  */
 public class ObservableObjectRule implements Rule<JDefinedClass, JDefinedClass> {
 
-	protected final String BASE_OBSERVABLE = "androidx.databinding.BaseObservable";
+	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
 
 	@Override
 	public JDefinedClass apply(String nodeName, JsonNode node, JsonNode parent, JDefinedClass clazz, Schema schema) {
-		clazz._extends(clazz.owner().directClass(BASE_OBSERVABLE));
+		clazz._extends(clazz.owner().directClass(BASE_OBSERVABLE_CLASS));
 
 		return clazz;
 	}

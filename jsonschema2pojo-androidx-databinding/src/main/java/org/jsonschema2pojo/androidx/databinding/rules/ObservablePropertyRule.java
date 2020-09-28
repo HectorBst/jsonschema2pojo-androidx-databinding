@@ -13,7 +13,7 @@ import org.jsonschema2pojo.rules.Rule;
  */
 public class ObservablePropertyRule implements Rule<JDefinedClass, JDefinedClass> {
 
-	protected final String BINDABLE = "androidx.databinding.Bindable";
+	protected static final String BINDABLE_CLASS = "androidx.databinding.Bindable";
 
 	private final AndroidDataBindingRuleFactory ruleFactory;
 
@@ -31,7 +31,7 @@ public class ObservablePropertyRule implements Rule<JDefinedClass, JDefinedClass
 			JMethod getter = clazz.getMethod(getterName, new JType[0]);
 
 			if (getter != null) {
-				getter.annotate(clazz.owner().directClass(BINDABLE));
+				getter.annotate(clazz.owner().directClass(BINDABLE_CLASS));
 			}
 
 			String setterName = ruleFactory.getNameHelper().getSetterName(nodeName, node);

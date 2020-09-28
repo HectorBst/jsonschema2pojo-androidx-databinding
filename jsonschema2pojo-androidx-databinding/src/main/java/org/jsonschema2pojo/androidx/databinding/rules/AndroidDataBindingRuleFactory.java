@@ -8,6 +8,10 @@ import org.jsonschema2pojo.rules.RuleFactory;
 import org.jsonschema2pojo.util.ParcelableHelper;
 
 /**
+ * The entry point of the Android Data Binding jsonschema2pojo extension.
+ *
+ * Allows the use of additional {@link Rule}s applied to handle Data Binding related elements.
+ *
  * @author Hector Basset
  */
 public class AndroidDataBindingRuleFactory extends RuleFactory {
