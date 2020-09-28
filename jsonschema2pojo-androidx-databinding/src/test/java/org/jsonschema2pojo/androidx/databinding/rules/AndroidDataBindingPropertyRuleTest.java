@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-public class ObservablePropertyRuleTest {
+public class AndroidDataBindingPropertyRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final JDefinedClass clazz = owner._class("test.Test");
@@ -29,9 +29,9 @@ public class ObservablePropertyRuleTest {
 	{
 		setter.param(field.type(), field.name());
 	}
-	final ObservablePropertyRule observablePropertyRule = new ObservablePropertyRule(new AndroidDataBindingRuleFactory());
+	final AndroidDataBindingPropertyRule androidDataBindingPropertyRule = new AndroidDataBindingPropertyRule(new AndroidDataBindingRuleFactory());
 
-	public ObservablePropertyRuleTest() throws JClassAlreadyExistsException {
+	public AndroidDataBindingPropertyRuleTest() throws JClassAlreadyExistsException {
 	}
 
 	@Test
@@ -40,10 +40,10 @@ public class ObservablePropertyRuleTest {
 		// Given
 
 		// When
-		observablePropertyRule.apply("test", null, null, clazz, null);
+		androidDataBindingPropertyRule.handleDataBinding("test", null, clazz);
 
 		// Then
-		assertThat(getter.annotations()).anyMatch(ann -> ann.getAnnotationClass().fullName().equals(ObservablePropertyRule.BINDABLE_CLASS));
+		assertThat(getter.annotations()).anyMatch(ann -> ann.getAnnotationClass().fullName().equals(AndroidDataBindingPropertyRule.BINDABLE_CLASS));
 	}
 
 	@Test
@@ -52,23 +52,20 @@ public class ObservablePropertyRuleTest {
 		// Given
 
 		// When
-		observablePropertyRule.apply("test", null, null, clazz, null);
+		androidDataBindingPropertyRule.handleDataBinding("test", null, clazz);
 
 		// Then
 		assertThat(setter.body().getContents()).last()
-				.isInstanceOfSatisfying(
-						JInvocation.class,
-						invocation -> {
-							Field nameField;
-							try {
-								//Dirty hack to check what is invoked
-								nameField = JInvocation.class.getDeclaredField("name");
-								nameField.setAccessible(true);
-								assertThat(nameField.get(invocation)).isEqualTo("notifyPropertyChanged");
-							} catch (NoSuchFieldException | IllegalAccessException e) {
-								throw new RuntimeException(e.getMessage(), e);
-							}
-						}
-				);
+				.isInstanceOfSatisfying(JInvocation.class, invocation -> {
+					Field nameField;
+					try {
+						//Dirty hack to check what is invoked
+						nameField = JInvocation.class.getDeclaredField("name");
+						nameField.setAccessible(true);
+						assertThat(nameField.get(invocation)).isEqualTo("notifyPropertyChanged");
+					} catch (NoSuchFieldException | IllegalAccessException e) {
+						throw new RuntimeException(e.getMessage(), e);
+					}
+				});
 	}
 }

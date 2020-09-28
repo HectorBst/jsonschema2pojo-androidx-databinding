@@ -6,7 +6,7 @@ buildscript {
 	repositories {
 		google()
 		jcenter()
-		mavenLocal()
+		mavenLocal()//just because jsonschema2pojo-androidx-databinding is in the same project here
 	}
 	dependencies {
 		classpath "com.android.tools.build:gradle:${androidGradleVersion}"

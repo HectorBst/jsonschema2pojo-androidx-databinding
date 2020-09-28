@@ -14,6 +14,8 @@ import org.jsonschema2pojo.rules.ObjectRule;
  */
 public class AndroidDataBindingObjectRule extends ObjectRule {
 
+	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
+
 	private final AndroidDataBindingRuleFactory ruleFactory;
 
 	protected AndroidDataBindingObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
@@ -25,12 +27,17 @@ public class AndroidDataBindingObjectRule extends ObjectRule {
 	public JType apply(String nodeName, JsonNode node, JsonNode parent, JPackage _package, Schema schema) {
 		JType type = super.apply(nodeName, node, parent, _package, schema);
 
+		handleDataBinding(type);
+
+		return type;
+	}
+
+	protected void handleDataBinding(JType type) {
+
 		if (type instanceof JDefinedClass) {
 			JDefinedClass clazz = (JDefinedClass) type;
 
-			ruleFactory.getObservableObjectRule().apply(nodeName, node, parent, clazz, schema);
+			clazz._extends(clazz.owner().directClass(BASE_OBSERVABLE_CLASS));
 		}
-
-		return type;
 	}
 }

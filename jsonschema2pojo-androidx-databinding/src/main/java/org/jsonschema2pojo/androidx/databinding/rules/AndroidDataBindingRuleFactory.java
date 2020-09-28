@@ -1,5 +1,6 @@
 package org.jsonschema2pojo.androidx.databinding.rules;
 
+import com.sun.codemodel.JClassContainer;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
@@ -32,11 +33,8 @@ public class AndroidDataBindingRuleFactory extends RuleFactory {
 		return new AndroidDataBindingPropertyRule(this);
 	}
 
-	public Rule<JDefinedClass, JDefinedClass> getObservableObjectRule() {
-		return new ObservableObjectRule();
-	}
-
-	public Rule<JDefinedClass, JDefinedClass> getObservablePropertyRule() {
-		return new ObservablePropertyRule(this);
+	@Override
+	public Rule<JClassContainer, JType> getTypeRule() {
+		return new AndroidDataBindingTypeRule(this);
 	}
 }

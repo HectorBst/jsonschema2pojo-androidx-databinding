@@ -13,13 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-public class ObservableObjectRuleTest {
+public class AndroidDataBindingObjectRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final JDefinedClass clazz = owner._class("test.Test");
-	final ObservableObjectRule observableObjectRule = new ObservableObjectRule();
+	final AndroidDataBindingObjectRule androidDataBindingObjectRule = new AndroidDataBindingObjectRule(new AndroidDataBindingRuleFactory());
 
-	public ObservableObjectRuleTest() throws JClassAlreadyExistsException {
+	public AndroidDataBindingObjectRuleTest() throws JClassAlreadyExistsException {
 	}
 
 	@Test
@@ -28,9 +28,9 @@ public class ObservableObjectRuleTest {
 		// Given
 
 		// When
-		observableObjectRule.apply("test", null, null, clazz, null);
+		androidDataBindingObjectRule.handleDataBinding(clazz);
 
 		// Then
-		assertThat(clazz._extends().fullName()).isEqualTo(ObservableObjectRule.BASE_OBSERVABLE_CLASS);
+		assertThat(clazz._extends().fullName()).isEqualTo(AndroidDataBindingObjectRule.BASE_OBSERVABLE_CLASS);
 	}
 }
