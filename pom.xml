@@ -23,13 +23,16 @@
 
 	<developers>
 		<developer>
+			<id>HectorBst</id>
 			<name>Hector Basset</name>
+			<email>hector.basset.dev@gmail.com</email>
+			<url>https://github.com/HectorBst</url>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/hectorbst/jsonschema2pojo-androidx-databinding</connection>
-		<developerConnection>scm:git:ssh://github.com:hectorbst/jsonschema2pojo-androidx-databinding
+		<connection>scm:git:git://github.com/hectorbst/jsonschema2pojo-androidx-databinding.git</connection>
+		<developerConnection>scm:git:ssh://github.com:hectorbst/jsonschema2pojo-androidx-databinding.git
 		</developerConnection>
 		<url>https://github.com/hectorbst/jsonschema2pojo-androidx-databinding</url>
 	</scm>
