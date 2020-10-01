@@ -1,17 +1,16 @@
 
-group = 'com.github.hectorbst.jsonschema2pojo'
-version = '1.0.0-SNAPSHOT'
+group = 'io.github.hectorbst'
+version = '0.0.1'
 
 buildscript {
 	repositories {
 		google()
 		jcenter()
-		mavenLocal()//just because jsonschema2pojo-androidx-databinding is in the same project here
 	}
 	dependencies {
 		classpath "com.android.tools.build:gradle:${androidGradleVersion}"
 		classpath "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:${jsonschema2pojoVersion}"
-		classpath "com.github.hectorbst.jsonschema2pojo:jsonschema2pojo-androidx-databinding:${jsonschema2pojoDataBindingVersion}"
+		classpath "io.github.hectorbst:jsonschema2pojo-androidx-databinding:${jsonschema2pojoDataBindingVersion}"
 	}
 }
 
