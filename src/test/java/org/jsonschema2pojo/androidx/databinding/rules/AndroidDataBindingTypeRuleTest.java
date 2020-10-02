@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-public class AndroidDataBindingTypeRuleTest {
+class AndroidDataBindingTypeRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final AndroidDataBindingTypeRule androidDataBindingTypeRule = new AndroidDataBindingTypeRule(new AndroidDataBindingRuleFactory());

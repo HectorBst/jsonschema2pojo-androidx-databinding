@@ -19,16 +19,18 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-public class AndroidDataBindingPropertyRuleTest {
+class AndroidDataBindingPropertyRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final JDefinedClass clazz = owner._class("test.Test");
 	final JFieldVar field = clazz.field(JMod.PRIVATE, owner.ref(String.class), "test");
 	final JMethod getter = clazz.method(JMod.PUBLIC, field.type(), "getTest");
 	final JMethod setter = clazz.method(JMod.PUBLIC, owner.VOID, "setTest");
+
 	{
 		setter.param(field.type(), field.name());
 	}
+
 	final AndroidDataBindingPropertyRule androidDataBindingPropertyRule = new AndroidDataBindingPropertyRule(new AndroidDataBindingRuleFactory());
 
 	public AndroidDataBindingPropertyRuleTest() throws JClassAlreadyExistsException {

@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-public class AndroidDataBindingObjectRuleTest {
+class AndroidDataBindingObjectRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final JDefinedClass clazz = owner._class("test.Test");

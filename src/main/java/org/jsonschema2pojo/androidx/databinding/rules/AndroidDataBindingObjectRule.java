@@ -16,16 +16,13 @@ public class AndroidDataBindingObjectRule extends ObjectRule {
 
 	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
 
-	private final AndroidDataBindingRuleFactory ruleFactory;
-
 	protected AndroidDataBindingObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory, ruleFactory.getParcelableHelper(), ruleFactory.getReflectionHelper());
-		this.ruleFactory = ruleFactory;
 	}
 
 	@Override
-	public JType apply(String nodeName, JsonNode node, JsonNode parent, JPackage _package, Schema schema) {
-		JType type = super.apply(nodeName, node, parent, _package, schema);
+	public JType apply(String nodeName, JsonNode node, JsonNode parent, JPackage jPackage, Schema schema) {
+		JType type = super.apply(nodeName, node, parent, jPackage, schema);
 
 		handleDataBinding(type);
 
