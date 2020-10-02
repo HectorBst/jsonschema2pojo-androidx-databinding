@@ -1,6 +1,8 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hectorbst/jsonschema2pojo-androidx-databinding/Build?label=Build)](https://github.com/HectorBst/jsonschema2pojo-androidx-databinding/actions?query=workflow%3ABuild)
+[![Build](https://img.shields.io/github/workflow/status/hectorbst/jsonschema2pojo-androidx-databinding/Build?label=Build)](https://github.com/HectorBst/jsonschema2pojo-androidx-databinding/actions?query=workflow%3ABuild)
+[![Coverage](https://img.shields.io/sonar/coverage/HectorBst_jsonschema2pojo-androidx-databinding?server=https%3A%2F%2Fsonarcloud.io&label=Coverage)](https://sonarcloud.io/dashboard?id=HectorBst_jsonschema2pojo-androidx-databinding)
+[![Violations](https://img.shields.io/sonar/violations/HectorBst_jsonschema2pojo-androidx-databinding?server=https%3A%2F%2Fsonarcloud.io&label=Violations)](https://sonarcloud.io/dashboard?id=HectorBst_jsonschema2pojo-androidx-databinding)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.hectorbst/jsonschema2pojo-androidx-databinding?label=Maven%20Central)](https://search.maven.org/artifact/io.github.hectorbst/jsonschema2pojo-androidx-databinding)
-[![GitHub](https://img.shields.io/github/license/hectorbst/jsonschema2pojo-androidx-databinding?label=Licence)](LICENSE)
+[![Licence](https://img.shields.io/github/license/hectorbst/jsonschema2pojo-androidx-databinding?label=Licence)](LICENSE)
 
 # jsonschema2pojo-androidx-databinding
 
