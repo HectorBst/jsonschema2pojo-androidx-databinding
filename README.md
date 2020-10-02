@@ -2,7 +2,7 @@
 [![Coverage](https://img.shields.io/sonar/coverage/HectorBst_jsonschema2pojo-androidx-databinding?server=https%3A%2F%2Fsonarcloud.io&label=Coverage)](https://sonarcloud.io/dashboard?id=HectorBst_jsonschema2pojo-androidx-databinding)
 [![Violations](https://img.shields.io/sonar/violations/HectorBst_jsonschema2pojo-androidx-databinding?server=https%3A%2F%2Fsonarcloud.io&label=Violations)](https://sonarcloud.io/dashboard?id=HectorBst_jsonschema2pojo-androidx-databinding)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.hectorbst/jsonschema2pojo-androidx-databinding?label=Maven%20Central)](https://search.maven.org/artifact/io.github.hectorbst/jsonschema2pojo-androidx-databinding)
-[![Licence](https://img.shields.io/github/license/hectorbst/jsonschema2pojo-androidx-databinding?label=Licence)](LICENSE)
+[![License](https://img.shields.io/github/license/hectorbst/jsonschema2pojo-androidx-databinding?label=License)](LICENSE)
 
 # jsonschema2pojo-androidx-databinding
 
