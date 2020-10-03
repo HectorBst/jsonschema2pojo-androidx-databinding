@@ -1,0 +1,81 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: 'Release version if different than actual without SNAPSHOT'
+        default: ''
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "jsonschema2pojo-androidx-databinding"
+          git config --global user.email "jsonschema2pojo-androidx-databinding@hectorbst.github.io"
+
+      - name: Update version
+        if: "github.event.inputs.releaseVersion != ''"
+        run: |
+          # Update development version if needed and commit
+          echo "New development version is ${{ github.event.inputs.releaseVersion }}-SNAPSHOT"
+          mvn -B versions:set -DnewVersion=${{ github.event.inputs.releaseVersion }}-SNAPSHOT
+          git commit pom.xml -m "Updated development version to ${{ github.event.inputs.releaseVersion }}-SNAPSHOT"
+
+      - name: Tag version
+        id: tag-version
+        run: |
+          # Get current development version
+          CURRENT_DEV_VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
+          echo "Current development version is $CURRENT_DEV_VERSION"
+          # Get release version
+          RELEASE_VERSION=${CURRENT_DEV_VERSION%-SNAPSHOT}
+          echo "Release version is $RELEASE_VERSION"
+          # Update with release version, commit and push
+          mvn -B versions:set -DnewVersion="${RELEASE_VERSION}"
+          git commit pom.xml -m "Release ${RELEASE_VERSION}"
+          git push
+          # Tag and push
+          git tag -a v$RELEASE_VERSION -m v$RELEASE_VERSION
+          git push --follow-tags
+          echo "::set-output name=releaseVersion::${RELEASE_VERSION}"
+          echo "::set-output name=tagName::v${RELEASE_VERSION}"
+
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          tag_name: ${{ steps.tag-version.outputs.tagName }}
+          release_name: ${{ steps.tag-version.outputs.releaseVersion }}
+          body: "Hosted on [Maven Central](https://search.maven.org/artifact/io.github.hectorbst/jsonschema2pojo-androidx-databinding/${{ steps.tag-version.outputs.releaseVersion }}/jar)."
+          draft: false
+          prerelease: false
+
+      - name: Increment version
+        run: |
+          # Increment to next development version, get it, commit and push
+          mvn -B org.apache.maven.plugins:maven-release-plugin:update-versions
+          NEXT_DEV_VERSION=`mvn help:evaluate -Dexpression=project.version -q -DforceStdout`
+          echo "Next development is $NEXT_DEV_VERSION"
+          git commit pom.xml -m "Started version ${NEXT_DEV_VERSION}"
+          git push
