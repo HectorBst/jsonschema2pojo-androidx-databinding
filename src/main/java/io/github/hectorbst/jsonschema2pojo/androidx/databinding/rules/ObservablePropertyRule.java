@@ -14,23 +14,27 @@ import org.jsonschema2pojo.rules.PropertyRule;
  *
  * @author Hector Basset
  */
-public class AndroidDataBindingPropertyRule extends PropertyRule {
+public class ObservablePropertyRule extends PropertyRule {
 
 	protected static final String BINDABLE_CLASS = "androidx.databinding.Bindable";
 	protected static final String BR_CLASS = "androidx.databinding.library.baseAdapters.BR";
 
 	private final AndroidDataBindingRuleFactory ruleFactory;
 
-	public AndroidDataBindingPropertyRule(AndroidDataBindingRuleFactory ruleFactory) {
+	public ObservablePropertyRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory);
 		this.ruleFactory = ruleFactory;
 	}
 
 	@Override
 	public JDefinedClass apply(String nodeName, JsonNode node, JsonNode parent, JDefinedClass clazz, Schema schema) {
+		ruleFactory.getDataBindingHelper().propagateObservable(schema);
+
 		clazz = super.apply(nodeName, node, parent, clazz, schema);
 
-		handleDataBinding(nodeName, node, clazz);
+		if (ruleFactory.getDataBindingHelper().mustHandleDataBinding(node)) {
+			handleDataBinding(nodeName, node, clazz);
+		}
 
 		return clazz;
 	}

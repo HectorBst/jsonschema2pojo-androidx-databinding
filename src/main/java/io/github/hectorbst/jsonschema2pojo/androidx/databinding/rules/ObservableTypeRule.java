@@ -5,8 +5,8 @@ import com.sun.codemodel.JClass;
 import com.sun.codemodel.JClassContainer;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JType;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.jsonschema2pojo.Schema;
-import org.jsonschema2pojo.rules.RuleFactory;
 import org.jsonschema2pojo.rules.TypeRule;
 
 import java.util.Collection;
@@ -15,20 +15,29 @@ import java.util.Map;
 /**
  * @author Hector Basset
  */
-public class AndroidDataBindingTypeRule extends TypeRule {
+public class ObservableTypeRule extends TypeRule {
 
 	protected static final String OBSERVABLE_LIST_CLASS = "androidx.databinding.ObservableList";
 	protected static final String OBSERVABLE_MAP_CLASS = "androidx.databinding.ObservableMap";
 
-	public AndroidDataBindingTypeRule(RuleFactory ruleFactory) {
+	private final AndroidDataBindingRuleFactory ruleFactory;
+
+	public ObservableTypeRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory);
+		this.ruleFactory = ruleFactory;
 	}
 
 	@Override
 	public JType apply(String nodeName, JsonNode node, JsonNode parent, JClassContainer classContainer, Schema schema) {
+		ruleFactory.getDataBindingHelper().propagateObservable(schema);
+
 		JType type = super.apply(nodeName, node, parent, classContainer, schema);
 
-		return handleDataBinding(type);
+		if (ruleFactory.getDataBindingHelper().mustHandleDataBinding(node)) {
+			type = handleDataBinding(type);
+		}
+
+		return type;
 	}
 
 	protected JType handleDataBinding(JType type) {

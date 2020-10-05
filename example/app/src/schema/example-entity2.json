@@ -1,0 +1,91 @@
+{
+	"$schema": "https://json-schema.org/draft-07/schema#",
+	"title": "Example entity",
+	"type": "object",
+	"properties": {
+		"oneString2": {
+			"title": "A sample string",
+			"type": "string"
+		},
+		"oneStringSkipped": {
+			"title": "A sample string not concerned by Data Binding",
+			"type": "string",
+			"x-adb-observable": false
+		},
+		"oneSubObjectSkipped": {
+			"title": "A sample sub object not concerned by Data Binding",
+			"type": "object",
+			"x-adb-observable": false,
+			"properties": {
+				"oneAnotherStringSkipped": {
+					"title": "A sample string not concerned by Data Binding",
+					"type": "string"
+				},
+				"oneAnotherListSkipped": {
+					"title": "A sample list not concerned by Data Binding",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"oneAnotherListOfListSkipped": {
+					"title": "A sample list of list not concerned by Data Binding",
+					"type": "array",
+					"items": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				},
+				"oneAnotherSubObjectSkipped": {
+					"title": "A sample sub object not concerned by Data Binding",
+					"type": "object",
+					"x-adb-observable": false,
+					"properties": {
+						"oneAnotherAnotherStringSkipped": {
+							"title": "A sample string not concerned by Data Binding",
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"oneList2": {
+			"title": "A sample list",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"oneListSkipped": {
+			"title": "A sample list not concerned by Data Binding",
+			"type": "array",
+			"x-adb-observable": false,
+			"items": {
+				"type": "string"
+			}
+		},
+		"oneListOfList2": {
+			"title": "A sample list of list",
+			"type": "array",
+			"items": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				}
+			}
+		},
+		"oneListOfListSkipped": {
+			"title": "A sample list of list not concerned by Data Binding",
+			"type": "array",
+			"x-adb-observable": false,
+			"items": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

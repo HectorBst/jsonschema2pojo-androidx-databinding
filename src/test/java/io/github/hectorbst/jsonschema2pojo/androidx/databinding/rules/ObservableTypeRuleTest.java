@@ -19,16 +19,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_LIST_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_MAP_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-class AndroidDataBindingTypeRuleTest {
+class ObservableTypeRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
-	final AndroidDataBindingTypeRule androidDataBindingTypeRule = new AndroidDataBindingTypeRule(new AndroidDataBindingRuleFactory());
+	final ObservableTypeRule observableTypeRule = new ObservableTypeRule(new AndroidDataBindingRuleFactory());
 
 	@Test
 	void when_primitive_must_not_convert() {
@@ -37,7 +39,7 @@ class AndroidDataBindingTypeRuleTest {
 		JType type = owner.BOOLEAN;
 
 		// When
-		JType result = androidDataBindingTypeRule.handleDataBinding(type);
+		JType result = observableTypeRule.handleDataBinding(type);
 
 		// Then
 		assertThat(result).isEqualTo(type);
@@ -50,7 +52,7 @@ class AndroidDataBindingTypeRuleTest {
 		JType type = owner.ref(String.class);
 
 		// When
-		JType result = androidDataBindingTypeRule.handleDataBinding(type);
+		JType result = observableTypeRule.handleDataBinding(type);
 
 		// Then
 		assertThat(result).isEqualTo(type);
@@ -63,7 +65,7 @@ class AndroidDataBindingTypeRuleTest {
 		JType type = owner._class("test.Test");
 
 		// When
-		JType result = androidDataBindingTypeRule.handleDataBinding(type);
+		JType result = observableTypeRule.handleDataBinding(type);
 
 		// Then
 		assertThat(result).isEqualTo(type);
@@ -86,11 +88,11 @@ class AndroidDataBindingTypeRuleTest {
 		JType type = owner.ref(clazz).narrow(owner.ref(String.class));
 
 		// When
-		JType result = androidDataBindingTypeRule.handleDataBinding(type);
+		JType result = observableTypeRule.handleDataBinding(type);
 
 		// Then
 		assertThat(result).isInstanceOfSatisfying(JClass.class, c -> {
-			assertThat(c.erasure().fullName()).isEqualTo(AndroidDataBindingTypeRule.OBSERVABLE_LIST_CLASS);
+			assertThat(c.erasure().fullName()).isEqualTo(OBSERVABLE_LIST_CLASS);
 			assertThat(c.getTypeParameters().get(0)).isEqualTo(owner.ref(String.class));
 		});
 	}
@@ -110,11 +112,11 @@ class AndroidDataBindingTypeRuleTest {
 		JType type = owner.ref(clazz).narrow(owner.ref(String.class), owner.ref(Double.class));
 
 		// When
-		JType result = androidDataBindingTypeRule.handleDataBinding(type);
+		JType result = observableTypeRule.handleDataBinding(type);
 
 		// Then
 		assertThat(result).isInstanceOfSatisfying(JClass.class, c -> {
-			assertThat(c.erasure().fullName()).isEqualTo(AndroidDataBindingTypeRule.OBSERVABLE_MAP_CLASS);
+			assertThat(c.erasure().fullName()).isEqualTo(OBSERVABLE_MAP_CLASS);
 			assertThat(c.getTypeParameters().get(0)).isEqualTo(owner.ref(String.class));
 			assertThat(c.getTypeParameters().get(1)).isEqualTo(owner.ref(Double.class));
 		});
@@ -127,12 +129,12 @@ class AndroidDataBindingTypeRuleTest {
 		JType type = owner.ref(List.class).narrow(owner.ref(List.class).narrow(owner.ref(String.class)));
 
 		// When
-		JType result = androidDataBindingTypeRule.handleDataBinding(type);
+		JType result = observableTypeRule.handleDataBinding(type);
 
 		// Then
 		assertThat(result).isInstanceOfSatisfying(JClass.class, c -> {
-			assertThat(c.erasure().fullName()).isEqualTo(AndroidDataBindingTypeRule.OBSERVABLE_LIST_CLASS);
-			assertThat(c.getTypeParameters().get(0).erasure().fullName()).isEqualTo(AndroidDataBindingTypeRule.OBSERVABLE_LIST_CLASS);
+			assertThat(c.erasure().fullName()).isEqualTo(OBSERVABLE_LIST_CLASS);
+			assertThat(c.getTypeParameters().get(0).erasure().fullName()).isEqualTo(OBSERVABLE_LIST_CLASS);
 			assertThat(c.getTypeParameters().get(0).getTypeParameters().get(0)).isEqualTo(owner.ref(String.class));
 		});
 	}

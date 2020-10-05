@@ -8,19 +8,20 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableObjectRule.BASE_OBSERVABLE_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-class AndroidDataBindingObjectRuleTest {
+class ObservableObjectRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final JDefinedClass clazz = owner._class("test.Test");
-	final AndroidDataBindingObjectRule androidDataBindingObjectRule = new AndroidDataBindingObjectRule(new AndroidDataBindingRuleFactory());
+	final ObservableObjectRule observableObjectRule = new ObservableObjectRule(new AndroidDataBindingRuleFactory());
 
-	public AndroidDataBindingObjectRuleTest() throws JClassAlreadyExistsException {
+	public ObservableObjectRuleTest() throws JClassAlreadyExistsException {
 	}
 
 	@Test
@@ -29,9 +30,9 @@ class AndroidDataBindingObjectRuleTest {
 		// Given
 
 		// When
-		androidDataBindingObjectRule.handleDataBinding(clazz);
+		observableObjectRule.handleDataBinding(clazz);
 
 		// Then
-		assertThat(clazz._extends().fullName()).isEqualTo(AndroidDataBindingObjectRule.BASE_OBSERVABLE_CLASS);
+		assertThat(clazz._extends().fullName()).isEqualTo(BASE_OBSERVABLE_CLASS);
 	}
 }

@@ -13,25 +13,31 @@ import org.jsonschema2pojo.rules.ObjectRule;
  *
  * @author Hector Basset
  */
-public class AndroidDataBindingObjectRule extends ObjectRule {
+public class ObservableObjectRule extends ObjectRule {
 
 	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
 
-	public AndroidDataBindingObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
+	private final AndroidDataBindingRuleFactory ruleFactory;
+
+	public ObservableObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory, ruleFactory.getParcelableHelper(), ruleFactory.getReflectionHelper());
+		this.ruleFactory = ruleFactory;
 	}
 
 	@Override
 	public JType apply(String nodeName, JsonNode node, JsonNode parent, JPackage jPackage, Schema schema) {
+		ruleFactory.getDataBindingHelper().propagateObservable(schema);
+
 		JType type = super.apply(nodeName, node, parent, jPackage, schema);
 
-		handleDataBinding(type);
+		if (ruleFactory.getDataBindingHelper().mustHandleDataBinding(node)) {
+			handleDataBinding(type);
+		}
 
 		return type;
 	}
 
 	protected void handleDataBinding(JType type) {
-
 		if (type instanceof JDefinedClass) {
 			JDefinedClass clazz = (JDefinedClass) type;
 

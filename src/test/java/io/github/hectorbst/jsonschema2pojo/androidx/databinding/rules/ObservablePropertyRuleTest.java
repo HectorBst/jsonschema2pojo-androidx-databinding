@@ -14,13 +14,14 @@ import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
 
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservablePropertyRule.BINDABLE_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-class AndroidDataBindingPropertyRuleTest {
+class ObservablePropertyRuleTest {
 
 	final JCodeModel owner = new JCodeModel();
 	final JDefinedClass clazz = owner._class("test.Test");
@@ -32,9 +33,9 @@ class AndroidDataBindingPropertyRuleTest {
 		setter.param(field.type(), field.name());
 	}
 
-	final AndroidDataBindingPropertyRule androidDataBindingPropertyRule = new AndroidDataBindingPropertyRule(new AndroidDataBindingRuleFactory());
+	final ObservablePropertyRule observablePropertyRule = new ObservablePropertyRule(new AndroidDataBindingRuleFactory());
 
-	public AndroidDataBindingPropertyRuleTest() throws JClassAlreadyExistsException {
+	public ObservablePropertyRuleTest() throws JClassAlreadyExistsException {
 	}
 
 	@Test
@@ -43,10 +44,10 @@ class AndroidDataBindingPropertyRuleTest {
 		// Given
 
 		// When
-		androidDataBindingPropertyRule.handleDataBinding("test", null, clazz);
+		observablePropertyRule.handleDataBinding("test", null, clazz);
 
 		// Then
-		assertThat(getter.annotations()).anyMatch(ann -> ann.getAnnotationClass().fullName().equals(AndroidDataBindingPropertyRule.BINDABLE_CLASS));
+		assertThat(getter.annotations()).anyMatch(ann -> ann.getAnnotationClass().fullName().equals(BINDABLE_CLASS));
 	}
 
 	@Test
@@ -55,7 +56,7 @@ class AndroidDataBindingPropertyRuleTest {
 		// Given
 
 		// When
-		androidDataBindingPropertyRule.handleDataBinding("test", null, clazz);
+		observablePropertyRule.handleDataBinding("test", null, clazz);
 
 		// Then
 		assertThat(setter.body().getContents()).last()
