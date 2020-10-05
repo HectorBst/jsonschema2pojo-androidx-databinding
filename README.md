@@ -82,6 +82,57 @@ public class Entity extends BaseObservable {
 }
 ```
 
+It is possible to exclude fields or classes from observability if they are not concerned by Data Binding, setting the
+JSON property `x-adb-observable` to `false` at property or schema level (if missing or `null` the value is `true`).
+
+E.g., this schema:
+```json
+{
+	"title": "Sample entity",
+	"type": "object",
+	"properties": {
+		"field": {
+			"title": "A string",
+			"type": "string"
+		},
+		"excludedField": {
+			"title": "A string",
+			"type": "string",
+			"x-adb-observable": false
+		}
+	}
+}
+```
+Will produce:
+```java
+public class Entity extends BaseObservable {
+
+	private String field;
+
+	private String excludedField;
+
+	@Bindable
+	public String getField() {
+		return field;
+	}
+
+	public void setField(String field) {
+		this.field = field;
+		notifyPropertyChanged(BR.field);
+	}
+
+	public String getExcludedField() {
+		return field;
+	}
+
+	public void setExcludedField(String field) {
+		this.field = field;
+	}
+}
+```
+
+If `x-adb-observable` is set to `false` fot an object, this value will be propagated to all properties.
+
 ## Gradle configuration
 
 Here is an example of how the extension can be added to the jsonschema2pojo Gradle plugin in a Android project.
@@ -121,7 +172,7 @@ jsonSchema2Pojo {
 }
 ```
 
-A more complete example is available [here](example).
+A more complete example testable in an Android application is available [here](example).
 
 ## License
 

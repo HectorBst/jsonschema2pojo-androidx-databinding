@@ -9,28 +9,32 @@ import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindi
 import org.jsonschema2pojo.Schema;
 import org.jsonschema2pojo.rules.PropertyRule;
 
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BINDABLE_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BR_CLASS;
+
 /**
  * Override of the default {@link PropertyRule} to apply data binding related elements.
  *
  * @author Hector Basset
  */
-public class AndroidDataBindingPropertyRule extends PropertyRule {
-
-	protected static final String BINDABLE_CLASS = "androidx.databinding.Bindable";
-	protected static final String BR_CLASS = "androidx.databinding.library.baseAdapters.BR";
+public class ObservablePropertyRule extends PropertyRule implements DataBindingRule {
 
 	private final AndroidDataBindingRuleFactory ruleFactory;
 
-	public AndroidDataBindingPropertyRule(AndroidDataBindingRuleFactory ruleFactory) {
+	public ObservablePropertyRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory);
 		this.ruleFactory = ruleFactory;
 	}
 
 	@Override
 	public JDefinedClass apply(String nodeName, JsonNode node, JsonNode parent, JDefinedClass clazz, Schema schema) {
+		propagateObservable(schema);
+
 		clazz = super.apply(nodeName, node, parent, clazz, schema);
 
-		handleDataBinding(nodeName, node, clazz);
+		if (mustHandleDataBinding(node)) {
+			handleDataBinding(nodeName, node, clazz);
+		}
 
 		return clazz;
 	}

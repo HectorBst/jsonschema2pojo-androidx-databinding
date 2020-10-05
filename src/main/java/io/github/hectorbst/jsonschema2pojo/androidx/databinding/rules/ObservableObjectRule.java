@@ -8,30 +8,33 @@ import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindi
 import org.jsonschema2pojo.Schema;
 import org.jsonschema2pojo.rules.ObjectRule;
 
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BASE_OBSERVABLE_CLASS;
+
 /**
  * Override of the default {@link ObjectRule} to apply data binding related elements.
  *
  * @author Hector Basset
  */
-public class AndroidDataBindingObjectRule extends ObjectRule {
+public class ObservableObjectRule extends ObjectRule implements DataBindingRule {
 
-	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
-
-	public AndroidDataBindingObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
+	public ObservableObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory, ruleFactory.getParcelableHelper(), ruleFactory.getReflectionHelper());
 	}
 
 	@Override
 	public JType apply(String nodeName, JsonNode node, JsonNode parent, JPackage jPackage, Schema schema) {
+		propagateObservable(schema);
+
 		JType type = super.apply(nodeName, node, parent, jPackage, schema);
 
-		handleDataBinding(type);
+		if (mustHandleDataBinding(node)) {
+			handleDataBinding(type);
+		}
 
 		return type;
 	}
 
 	protected void handleDataBinding(JType type) {
-
 		if (type instanceof JDefinedClass) {
 			JDefinedClass clazz = (JDefinedClass) type;
 

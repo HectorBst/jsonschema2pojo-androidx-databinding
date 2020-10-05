@@ -12,23 +12,29 @@ import org.jsonschema2pojo.rules.TypeRule;
 import java.util.Collection;
 import java.util.Map;
 
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.OBSERVABLE_LIST_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.OBSERVABLE_MAP_CLASS;
+
 /**
  * @author Hector Basset
  */
-public class AndroidDataBindingTypeRule extends TypeRule {
+public class ObservableTypeRule extends TypeRule implements DataBindingRule {
 
-	protected static final String OBSERVABLE_LIST_CLASS = "androidx.databinding.ObservableList";
-	protected static final String OBSERVABLE_MAP_CLASS = "androidx.databinding.ObservableMap";
-
-	public AndroidDataBindingTypeRule(RuleFactory ruleFactory) {
+	public ObservableTypeRule(RuleFactory ruleFactory) {
 		super(ruleFactory);
 	}
 
 	@Override
 	public JType apply(String nodeName, JsonNode node, JsonNode parent, JClassContainer classContainer, Schema schema) {
+		propagateObservable(schema);
+
 		JType type = super.apply(nodeName, node, parent, classContainer, schema);
 
-		return handleDataBinding(type);
+		if (mustHandleDataBinding(node)) {
+			type = handleDataBinding(type);
+		}
+
+		return type;
 	}
 
 	protected JType handleDataBinding(JType type) {

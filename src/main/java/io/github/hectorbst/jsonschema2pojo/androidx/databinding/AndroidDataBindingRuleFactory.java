@@ -4,9 +4,9 @@ import com.sun.codemodel.JClassContainer;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingObjectRule;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingPropertyRule;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingTypeRule;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableObjectRule;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservablePropertyRule;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule;
 import org.jsonschema2pojo.rules.Rule;
 import org.jsonschema2pojo.rules.RuleFactory;
 import org.jsonschema2pojo.util.ParcelableHelper;
@@ -28,16 +28,16 @@ public class AndroidDataBindingRuleFactory extends RuleFactory {
 
 	@Override
 	public Rule<JPackage, JType> getObjectRule() {
-		return new AndroidDataBindingObjectRule(this);
+		return new ObservableObjectRule(this);
 	}
 
 	@Override
 	public Rule<JDefinedClass, JDefinedClass> getPropertyRule() {
-		return new AndroidDataBindingPropertyRule(this);
+		return new ObservablePropertyRule(this);
 	}
 
 	@Override
 	public Rule<JClassContainer, JType> getTypeRule() {
-		return new AndroidDataBindingTypeRule(this);
+		return new ObservableTypeRule(this);
 	}
 }
