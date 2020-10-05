@@ -1,4 +1,4 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -9,11 +9,11 @@ import java.util.Optional;
 /**
  * @author Hector Basset
  */
-public interface DataBindingRule {
+public class DataBindingHelper {
 
-	String JSON_KEY_OBSERVABLE = "x-adb-observable";
+	protected static final String JSON_KEY_OBSERVABLE = "x-adb-observable";
 
-	default void propagateObservable(Schema schema) {
+	public void propagateObservable(Schema schema) {
 		if (schema.getContent().get(JSON_KEY_OBSERVABLE) == null) {
 			Optional.ofNullable(schema.getParent())
 					.map(Schema::getContent)
@@ -24,7 +24,7 @@ public interface DataBindingRule {
 		}
 	}
 
-	default boolean mustHandleDataBinding(JsonNode node) {
+	public boolean mustHandleDataBinding(JsonNode node) {
 		return Optional.ofNullable(node.get(JSON_KEY_OBSERVABLE))
 				.map(n -> n.asBoolean(true))
 				.orElse(Boolean.TRUE);

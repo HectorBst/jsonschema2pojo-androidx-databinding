@@ -1,4 +1,4 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,17 +16,16 @@ import org.junit.runner.RunWith;
 
 import java.util.stream.Stream;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.DataBindingRule.JSON_KEY_OBSERVABLE;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.util.DataBindingHelper.JSON_KEY_OBSERVABLE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-class DataBindingRuleTest {
+class DataBindingHelperTest {
 
-	final DataBindingRule dataBindingRule = new DataBindingRule() {
-	};
+	final DataBindingHelper dataBindingHelper = new DataBindingHelper();
 	final ObjectMapper objectMapper = new ObjectMapper();
 
 	@Test
@@ -36,7 +35,7 @@ class DataBindingRuleTest {
 		Schema schema = new Schema(null, objectMapper.createObjectNode(), null);
 
 		// When
-		dataBindingRule.propagateObservable(schema);
+		dataBindingHelper.propagateObservable(schema);
 
 		// Then
 		assertThat(schema.getContent().path(JSON_KEY_OBSERVABLE)).isEqualTo(MissingNode.getInstance());
@@ -61,7 +60,7 @@ class DataBindingRuleTest {
 		Schema schema = new Schema(null, objectMapper.createObjectNode(), parent);
 
 		// When
-		dataBindingRule.propagateObservable(schema);
+		dataBindingHelper.propagateObservable(schema);
 
 		// Then
 		assertThat(schema.getContent().path(JSON_KEY_OBSERVABLE)).isEqualTo(MissingNode.getInstance());
@@ -77,7 +76,7 @@ class DataBindingRuleTest {
 		Schema schema = new Schema(null, objectMapper.createObjectNode(), parent);
 
 		// When
-		dataBindingRule.propagateObservable(schema);
+		dataBindingHelper.propagateObservable(schema);
 
 		// Then
 		assertThat(schema.getContent().path(JSON_KEY_OBSERVABLE)).isEqualTo(BooleanNode.FALSE);
@@ -108,7 +107,7 @@ class DataBindingRuleTest {
 		Schema schema = new Schema(null, content, parent);
 
 		// When
-		dataBindingRule.propagateObservable(schema);
+		dataBindingHelper.propagateObservable(schema);
 
 		// Then
 		assertThat(schema.getContent().path(JSON_KEY_OBSERVABLE)).isEqualTo(currentValue);
@@ -123,7 +122,7 @@ class DataBindingRuleTest {
 		node.set(JSON_KEY_OBSERVABLE, observable);
 
 		// When
-		boolean handle = dataBindingRule.mustHandleDataBinding(node);
+		boolean handle = dataBindingHelper.mustHandleDataBinding(node);
 
 		// Then
 		assertThat(handle).isTrue();
@@ -137,7 +136,7 @@ class DataBindingRuleTest {
 		node.put(JSON_KEY_OBSERVABLE, false);
 
 		// When
-		boolean handle = dataBindingRule.mustHandleDataBinding(node);
+		boolean handle = dataBindingHelper.mustHandleDataBinding(node);
 
 		// Then
 		assertThat(handle).isFalse();

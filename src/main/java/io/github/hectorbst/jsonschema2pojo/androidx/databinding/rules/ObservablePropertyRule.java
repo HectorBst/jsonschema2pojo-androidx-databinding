@@ -14,7 +14,7 @@ import org.jsonschema2pojo.rules.PropertyRule;
  *
  * @author Hector Basset
  */
-public class ObservablePropertyRule extends PropertyRule implements DataBindingRule {
+public class ObservablePropertyRule extends PropertyRule {
 
 	protected static final String BINDABLE_CLASS = "androidx.databinding.Bindable";
 	protected static final String BR_CLASS = "androidx.databinding.library.baseAdapters.BR";
@@ -28,11 +28,11 @@ public class ObservablePropertyRule extends PropertyRule implements DataBindingR
 
 	@Override
 	public JDefinedClass apply(String nodeName, JsonNode node, JsonNode parent, JDefinedClass clazz, Schema schema) {
-		propagateObservable(schema);
+		ruleFactory.getDataBindingHelper().propagateObservable(schema);
 
 		clazz = super.apply(nodeName, node, parent, clazz, schema);
 
-		if (mustHandleDataBinding(node)) {
+		if (ruleFactory.getDataBindingHelper().mustHandleDataBinding(node)) {
 			handleDataBinding(nodeName, node, clazz);
 		}
 

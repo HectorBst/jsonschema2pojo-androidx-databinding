@@ -7,13 +7,14 @@ import com.sun.codemodel.JType;
 import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableObjectRule;
 import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservablePropertyRule;
 import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.util.DataBindingHelper;
 import org.jsonschema2pojo.rules.Rule;
 import org.jsonschema2pojo.rules.RuleFactory;
 import org.jsonschema2pojo.util.ParcelableHelper;
 
 /**
  * The entry point of the Android Data Binding jsonschema2pojo extension.
- *
+ * <p>
  * Allows the use of additional {@link Rule}s applied to handle Data Binding related elements.
  *
  * @author Hector Basset
@@ -21,9 +22,14 @@ import org.jsonschema2pojo.util.ParcelableHelper;
 public class AndroidDataBindingRuleFactory extends RuleFactory {
 
 	private final ParcelableHelper parcelableHelper = new ParcelableHelper();
+	private final DataBindingHelper dataBindingHelper = new DataBindingHelper();
 
 	public ParcelableHelper getParcelableHelper() {
 		return parcelableHelper;
+	}
+
+	public DataBindingHelper getDataBindingHelper() {
+		return dataBindingHelper;
 	}
 
 	@Override
