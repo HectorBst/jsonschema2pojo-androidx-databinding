@@ -12,6 +12,8 @@ This project is a [*jsonschema2pojo*](https://github.com/joelittlejohn/jsonschem
 
 ## Features
 
+### Observable objects
+
 This extension generate observable data objects as explained [here](https://developer.android.com/topic/libraries/data-binding/observability#observable_objects).
 
 E.g., this schema:
@@ -44,6 +46,8 @@ public class Entity extends BaseObservable {
 	}
 }
 ```
+
+### Collections and maps
 
 `Collection` type fields become [`ObservableList`](https://developer.android.com/reference/android/databinding/ObservableList)
 and `Map` type fields become [`ObservableMap`](https://developer.android.com/reference/android/databinding/ObservableMap).
@@ -81,6 +85,8 @@ public class Entity extends BaseObservable {
 	}
 }
 ```
+
+### Disable observability for specific fields or classes
 
 It is possible to exclude fields or classes from observability if they are not concerned by Data Binding, setting the
 JSON property `x-adb-observable` to `false` at property or schema level (if missing or `null` the value is `true`).
@@ -131,7 +137,7 @@ public class Entity extends BaseObservable {
 }
 ```
 
-If `x-adb-observable` is set to `false` fot an object, this value will be propagated to all properties.
+If `x-adb-observable` is set to `false` for an object, this value will be propagated to all properties.
 
 ## Gradle configuration
 
