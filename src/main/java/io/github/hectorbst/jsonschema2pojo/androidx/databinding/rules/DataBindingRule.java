@@ -6,12 +6,12 @@ import org.jsonschema2pojo.Schema;
 
 import java.util.Optional;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.JSON_KEY_OBSERVABLE;
-
 /**
  * @author Hector Basset
  */
 public interface DataBindingRule {
+
+	String JSON_KEY_OBSERVABLE = "x-adb-observable";
 
 	default void propagateObservable(Schema schema) {
 		if (schema.getContent().get(JSON_KEY_OBSERVABLE) == null) {

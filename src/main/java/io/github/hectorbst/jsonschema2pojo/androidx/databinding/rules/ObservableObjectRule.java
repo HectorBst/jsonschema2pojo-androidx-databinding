@@ -8,14 +8,14 @@ import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindi
 import org.jsonschema2pojo.Schema;
 import org.jsonschema2pojo.rules.ObjectRule;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BASE_OBSERVABLE_CLASS;
-
 /**
  * Override of the default {@link ObjectRule} to apply data binding related elements.
  *
  * @author Hector Basset
  */
 public class ObservableObjectRule extends ObjectRule implements DataBindingRule {
+
+	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
 
 	public ObservableObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory, ruleFactory.getParcelableHelper(), ruleFactory.getReflectionHelper());

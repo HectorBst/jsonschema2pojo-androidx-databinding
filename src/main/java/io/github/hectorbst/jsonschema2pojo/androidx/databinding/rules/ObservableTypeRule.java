@@ -12,13 +12,13 @@ import org.jsonschema2pojo.rules.TypeRule;
 import java.util.Collection;
 import java.util.Map;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.OBSERVABLE_LIST_CLASS;
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.OBSERVABLE_MAP_CLASS;
-
 /**
  * @author Hector Basset
  */
 public class ObservableTypeRule extends TypeRule implements DataBindingRule {
+
+	protected static final String OBSERVABLE_LIST_CLASS = "androidx.databinding.ObservableList";
+	protected static final String OBSERVABLE_MAP_CLASS = "androidx.databinding.ObservableMap";
 
 	public ObservableTypeRule(RuleFactory ruleFactory) {
 		super(ruleFactory);

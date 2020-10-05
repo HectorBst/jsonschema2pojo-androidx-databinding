@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BASE_OBSERVABLE_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableObjectRule.BASE_OBSERVABLE_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

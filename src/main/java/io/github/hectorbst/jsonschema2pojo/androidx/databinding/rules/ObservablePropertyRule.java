@@ -9,15 +9,15 @@ import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindi
 import org.jsonschema2pojo.Schema;
 import org.jsonschema2pojo.rules.PropertyRule;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BINDABLE_CLASS;
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BR_CLASS;
-
 /**
  * Override of the default {@link PropertyRule} to apply data binding related elements.
  *
  * @author Hector Basset
  */
 public class ObservablePropertyRule extends PropertyRule implements DataBindingRule {
+
+	protected static final String BINDABLE_CLASS = "androidx.databinding.Bindable";
+	protected static final String BR_CLASS = "androidx.databinding.library.baseAdapters.BR";
 
 	private final AndroidDataBindingRuleFactory ruleFactory;
 

@@ -16,14 +16,14 @@ import org.junit.runner.RunWith;
 
 import java.util.stream.Stream;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.JSON_KEY_OBSERVABLE;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.DataBindingRule.JSON_KEY_OBSERVABLE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Hector Basset
  */
 @RunWith(JUnitPlatform.class)
-public class DataBindingRuleTest {
+class DataBindingRuleTest {
 
 	final DataBindingRule dataBindingRule = new DataBindingRule() {
 	};

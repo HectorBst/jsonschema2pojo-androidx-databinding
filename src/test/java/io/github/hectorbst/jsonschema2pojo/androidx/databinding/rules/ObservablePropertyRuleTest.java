@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.BINDABLE_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservablePropertyRule.BINDABLE_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

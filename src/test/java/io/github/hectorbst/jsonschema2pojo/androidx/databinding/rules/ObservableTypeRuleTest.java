@@ -19,8 +19,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.OBSERVABLE_LIST_CLASS;
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.Constants.OBSERVABLE_MAP_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_LIST_CLASS;
+import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_MAP_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
