@@ -1,2 +1,2 @@
-
-rootProject.name = 'jsonschema2pojo-androidx-databinding-example'
+include ':app'
+rootProject.name = "jsonschema2pojo Android Databinding Exemple"

@@ -17,6 +17,7 @@ import org.jsonschema2pojo.rules.PropertyRule;
 public class AndroidDataBindingPropertyRule extends PropertyRule {
 
 	protected static final String BINDABLE_CLASS = "androidx.databinding.Bindable";
+	protected static final String BR_CLASS = "androidx.databinding.library.baseAdapters.BR";
 
 	private final AndroidDataBindingRuleFactory ruleFactory;
 
@@ -51,7 +52,7 @@ public class AndroidDataBindingPropertyRule extends PropertyRule {
 			JMethod setter = clazz.getMethod(setterName, new JType[]{field.type()});
 
 			if (setter != null) {
-				setter.body().invoke("notifyPropertyChanged").arg(clazz.owner().directClass("BR").staticRef(field.name()));
+				setter.body().invoke("notifyPropertyChanged").arg(clazz.owner().directClass(BR_CLASS).staticRef(field.name()));
 			}
 		}
 	}

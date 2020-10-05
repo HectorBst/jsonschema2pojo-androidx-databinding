@@ -1,11 +1,15 @@
 {
 	"$schema": "https://json-schema.org/draft-07/schema#",
-	"title": "Sample entity",
+	"title": "Example entity",
 	"type": "object",
 	"properties": {
 		"oneString": {
 			"title": "A sample string",
 			"type": "string"
+		},
+		"oneBoolean": {
+			"title": "A sample boolean",
+			"type": "boolean"
 		},
 		"oneInteger": {
 			"title": "A sample integer",
@@ -37,7 +41,7 @@
 			"type": "object",
 			"properties": {
 				"oneAnotherString": {
-					"title": "An other sample string",
+					"title": "A sample string",
 					"type": "string"
 				}
 			}

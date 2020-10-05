@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+	<data>
+		<variable
+				name="entity"
+				type="io.github.hectorbst.jsonschema2pojo.androidx.databinding.example.data.ExampleEntity"/>
+	</data>
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" android:orientation="vertical">
+
+		<TextView
+				android:id="@+id/oneString_label"
+				android:text="@string/oneString_label"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<TextView
+				android:id="@+id/oneString_value"
+				android:text="@{entity.oneString}"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<EditText
+				android:id="@+id/oneString_edit"
+				android:text="@={entity.oneString}"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:autofillHints="text"
+				android:inputType="text"/>
+
+		<TextView
+				android:id="@+id/oneBoolean_label"
+				android:text="@string/oneBoolean_label"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<CheckBox
+				android:id="@+id/oneBoolean_value"
+				android:checked="@{entity.oneBoolean}"
+				android:enabled="false"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<CheckBox
+				android:id="@+id/oneBoolean_edit"
+				android:checked="@={entity.oneBoolean}"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<TextView
+				android:id="@+id/oneInteger_label"
+				android:text="@string/oneInteger_label"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<TextView
+				android:id="@+id/oneInteger_value"
+				android:text="@{Integer.toString(entity.oneInteger)}"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+
+		<NumberPicker
+				android:id="@+id/oneInteger_edit"
+				android:value="@={entity.oneInteger}"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"/>
+	</LinearLayout>
+</layout>
