@@ -4,7 +4,7 @@
 
 	<groupId>io.github.hectorbst</groupId>
 	<artifactId>jsonschema2pojo-androidx-databinding</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.2.0</version>
 	<packaging>jar</packaging>
 
 	<name>jsonschema2pojo Android Data Binding</name>
