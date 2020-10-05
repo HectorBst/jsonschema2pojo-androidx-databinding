@@ -1,8 +1,9 @@
-package org.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.sun.codemodel.JClassAlreadyExistsException;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;

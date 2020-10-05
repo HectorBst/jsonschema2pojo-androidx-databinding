@@ -1,9 +1,12 @@
-package org.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding;
 
 import com.sun.codemodel.JClassContainer;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingObjectRule;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingPropertyRule;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingTypeRule;
 import org.jsonschema2pojo.rules.Rule;
 import org.jsonschema2pojo.rules.RuleFactory;
 import org.jsonschema2pojo.util.ParcelableHelper;

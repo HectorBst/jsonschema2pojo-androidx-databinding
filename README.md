@@ -117,7 +117,7 @@ android {
 jsonSchema2Pojo {
 	...
 	//Extension RuleFactory
-	customRuleFactory = 'org.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingRuleFactory'
+	customRuleFactory = 'io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory'
 }
 ```
 

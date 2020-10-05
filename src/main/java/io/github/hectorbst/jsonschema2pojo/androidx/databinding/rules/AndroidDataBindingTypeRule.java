@@ -1,4 +1,4 @@
-package org.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.codemodel.JClass;
@@ -20,7 +20,7 @@ public class AndroidDataBindingTypeRule extends TypeRule {
 	protected static final String OBSERVABLE_LIST_CLASS = "androidx.databinding.ObservableList";
 	protected static final String OBSERVABLE_MAP_CLASS = "androidx.databinding.ObservableMap";
 
-	protected AndroidDataBindingTypeRule(RuleFactory ruleFactory) {
+	public AndroidDataBindingTypeRule(RuleFactory ruleFactory) {
 		super(ruleFactory);
 	}
 

@@ -52,5 +52,5 @@ jsonSchema2Pojo {
 			'float64': 'java.lang.Double',
 			'real': 'java.math.BigDecimal'
 	]
-	customRuleFactory = 'org.jsonschema2pojo.androidx.databinding.rules.AndroidDataBindingRuleFactory'
+	customRuleFactory = 'io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory'
 }

@@ -1,9 +1,10 @@
-package org.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.jsonschema2pojo.Schema;
 import org.jsonschema2pojo.rules.ObjectRule;
 
@@ -16,7 +17,7 @@ public class AndroidDataBindingObjectRule extends ObjectRule {
 
 	protected static final String BASE_OBSERVABLE_CLASS = "androidx.databinding.BaseObservable";
 
-	protected AndroidDataBindingObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
+	public AndroidDataBindingObjectRule(AndroidDataBindingRuleFactory ruleFactory) {
 		super(ruleFactory, ruleFactory.getParcelableHelper(), ruleFactory.getReflectionHelper());
 	}
 

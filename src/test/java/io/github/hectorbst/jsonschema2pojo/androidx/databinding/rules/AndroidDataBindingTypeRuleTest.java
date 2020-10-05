@@ -1,9 +1,10 @@
-package org.jsonschema2pojo.androidx.databinding.rules;
+package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JClassAlreadyExistsException;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JType;
+import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
