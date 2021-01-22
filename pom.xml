@@ -5,7 +5,7 @@
 
 	<groupId>dev.hctbst</groupId>
 	<artifactId>jsonschema2pojo-androidx-databinding</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>jsonschema2pojo Android Data Binding</name>
