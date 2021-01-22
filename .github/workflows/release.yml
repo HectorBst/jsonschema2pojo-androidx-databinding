@@ -31,7 +31,7 @@ jobs:
       - name: Set up Git
         run: |
           git config --global user.name "jsonschema2pojo-androidx-databinding"
-          git config --global user.email "jsonschema2pojo-androidx-databinding@hectorbst.github.io"
+          git config --global user.email "jsonschema2pojo-androidx-databinding@hctbst.dev"
 
       - name: Update version
         if: "github.event.inputs.releaseVersion != ''"
@@ -67,7 +67,7 @@ jobs:
         with:
           tag_name: ${{ steps.tag-version.outputs.tagName }}
           release_name: ${{ steps.tag-version.outputs.releaseVersion }}
-          body: "Hosted on [Maven Central](https://search.maven.org/artifact/io.github.hectorbst/jsonschema2pojo-androidx-databinding/${{ steps.tag-version.outputs.releaseVersion }}/jar)."
+          body: "Hosted on [Maven Central](https://search.maven.org/artifact/dev.hctbst/jsonschema2pojo-androidx-databinding/${{ steps.tag-version.outputs.releaseVersion }}/jar)."
           draft: false
           prerelease: false
 

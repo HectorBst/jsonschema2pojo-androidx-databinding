@@ -1,4 +1,4 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.util;
+package dev.hctbst.jsonschema2pojo.androidx.databinding.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;

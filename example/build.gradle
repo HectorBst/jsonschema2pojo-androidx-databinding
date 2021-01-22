@@ -1,7 +1,7 @@
 buildscript {
 	ext.android_gradle_version = "4.0.1"
 	ext.jsonschema2pojo_version = "1.0.2"
-	ext.jsonschema2pojo_data_binding_version = "0.3.0"
+	ext.jsonschema2pojo_data_binding_version = "1.0.0"
 	repositories {
 		google()
 		jcenter()
@@ -9,7 +9,7 @@ buildscript {
 	dependencies {
 		classpath "com.android.tools.build:gradle:$android_gradle_version"
 		classpath "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:$jsonschema2pojo_version"
-		classpath "io.github.hectorbst:jsonschema2pojo-androidx-databinding:$jsonschema2pojo_data_binding_version"
+		classpath "dev.hctbst:jsonschema2pojo-androidx-databinding:$jsonschema2pojo_data_binding_version"
 	}
 }
 

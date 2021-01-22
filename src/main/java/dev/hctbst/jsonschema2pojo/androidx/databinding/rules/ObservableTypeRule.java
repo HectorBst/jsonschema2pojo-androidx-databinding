@@ -1,11 +1,11 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
+package dev.hctbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JClassContainer;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JType;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
+import dev.hctbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.jsonschema2pojo.Schema;
 import org.jsonschema2pojo.rules.TypeRule;
 

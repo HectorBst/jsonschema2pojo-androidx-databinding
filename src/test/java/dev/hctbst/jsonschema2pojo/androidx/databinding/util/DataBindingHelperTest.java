@@ -1,4 +1,4 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.util;
+package dev.hctbst.jsonschema2pojo.androidx.databinding.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 
 import java.util.stream.Stream;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.util.DataBindingHelper.JSON_KEY_OBSERVABLE;
+import static dev.hctbst.jsonschema2pojo.androidx.databinding.util.DataBindingHelper.JSON_KEY_OBSERVABLE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

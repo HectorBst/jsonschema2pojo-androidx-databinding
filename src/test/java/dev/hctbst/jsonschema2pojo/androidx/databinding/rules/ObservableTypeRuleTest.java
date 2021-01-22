@@ -1,10 +1,10 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
+package dev.hctbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.sun.codemodel.JClass;
 import com.sun.codemodel.JClassAlreadyExistsException;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JType;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
+import dev.hctbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -19,8 +19,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_LIST_CLASS;
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_MAP_CLASS;
+import static dev.hctbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_LIST_CLASS;
+import static dev.hctbst.jsonschema2pojo.androidx.databinding.rules.ObservableTypeRule.OBSERVABLE_MAP_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

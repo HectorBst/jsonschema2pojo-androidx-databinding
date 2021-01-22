@@ -1,4 +1,4 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules;
+package dev.hctbst.jsonschema2pojo.androidx.databinding.rules;
 
 import com.sun.codemodel.JClassAlreadyExistsException;
 import com.sun.codemodel.JCodeModel;
@@ -7,14 +7,14 @@ import com.sun.codemodel.JFieldVar;
 import com.sun.codemodel.JInvocation;
 import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
+import dev.hctbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
 
-import static io.github.hectorbst.jsonschema2pojo.androidx.databinding.rules.ObservablePropertyRule.BINDABLE_CLASS;
+import static dev.hctbst.jsonschema2pojo.androidx.databinding.rules.ObservablePropertyRule.BINDABLE_CLASS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**

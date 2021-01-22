@@ -6,7 +6,7 @@ android {
 	compileSdkVersion 29
 
 	defaultConfig {
-		applicationId "io.github.hectorbst.jsonschema2pojo.androidx.databinding.example"
+		applicationId "dev.hctbst.jsonschema2pojo.androidx.databinding.example"
 		minSdkVersion 26
 		targetSdkVersion 29
 		versionCode 1
@@ -28,7 +28,7 @@ dependencies {
 
 jsonSchema2Pojo {
 	source = project.files("src/schema")
-	targetPackage = 'io.github.hectorbst.jsonschema2pojo.androidx.databinding.example.data'
+	targetPackage = 'dev.hctbst.jsonschema2pojo.androidx.databinding.example.data'
 	generateBuilders = false
 	useInnerClassBuilders = false
 	includeAdditionalProperties = false
@@ -48,5 +48,5 @@ jsonSchema2Pojo {
 			'float64': 'java.lang.Double',
 			'real': 'java.math.BigDecimal'
 	]
-	customRuleFactory = 'io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory'
+	customRuleFactory = 'dev.hctbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory'
 }

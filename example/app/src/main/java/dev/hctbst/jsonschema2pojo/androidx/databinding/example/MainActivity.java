@@ -1,11 +1,11 @@
-package io.github.hectorbst.jsonschema2pojo.androidx.databinding.example;
+package dev.hctbst.jsonschema2pojo.androidx.databinding.example;
 
 import android.os.Bundle;
 import android.widget.NumberPicker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.example.data.ExampleEntity;
-import io.github.hectorbst.jsonschema2pojo.androidx.databinding.example.databinding.ActivityMainBinding;
+import dev.hctbst.jsonschema2pojo.androidx.databinding.example.data.ExampleEntity;
+import dev.hctbst.jsonschema2pojo.androidx.databinding.example.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

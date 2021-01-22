@@ -1,7 +1,7 @@
 [![Build](https://img.shields.io/github/workflow/status/hectorbst/jsonschema2pojo-androidx-databinding/Build?label=Build)](https://github.com/HectorBst/jsonschema2pojo-androidx-databinding/actions?query=workflow%3ABuild)
 [![Coverage](https://img.shields.io/sonar/coverage/HectorBst_jsonschema2pojo-androidx-databinding?server=https%3A%2F%2Fsonarcloud.io&label=Coverage)](https://sonarcloud.io/dashboard?id=HectorBst_jsonschema2pojo-androidx-databinding)
 [![Violations](https://img.shields.io/sonar/violations/HectorBst_jsonschema2pojo-androidx-databinding?server=https%3A%2F%2Fsonarcloud.io&label=Violations)](https://sonarcloud.io/dashboard?id=HectorBst_jsonschema2pojo-androidx-databinding)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.hectorbst/jsonschema2pojo-androidx-databinding?label=Maven%20Central)](https://search.maven.org/artifact/io.github.hectorbst/jsonschema2pojo-androidx-databinding)
+[![Maven Central](https://img.shields.io/maven-central/v/dev.hctbst/jsonschema2pojo-androidx-databinding?label=Maven%20Central)](https://search.maven.org/artifact/dev.hctbst/jsonschema2pojo-androidx-databinding)
 [![License](https://img.shields.io/github/license/hectorbst/jsonschema2pojo-androidx-databinding?label=License)](LICENSE)
 
 # jsonschema2pojo-androidx-databinding
@@ -153,7 +153,7 @@ buildscript {
 		//jsonschema2pojo dependency
 		classpath "org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:${jsonschema2pojoVersion}"
 		//Extension dependency
-		classpath "io.github.hectorbst:jsonschema2pojo-androidx-databinding:${jsonschema2pojoDataBindingVersion}"
+		classpath "dev.hctbst:jsonschema2pojo-androidx-databinding:${jsonschema2pojoDataBindingVersion}"
 	}
 }
 
@@ -174,7 +174,7 @@ android {
 jsonSchema2Pojo {
 	...
 	//Extension RuleFactory
-	customRuleFactory = 'io.github.hectorbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory'
+	customRuleFactory = 'dev.hctbst.jsonschema2pojo.androidx.databinding.AndroidDataBindingRuleFactory'
 }
 ```
 
