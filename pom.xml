@@ -40,7 +40,7 @@
 		<maven.compiler.target>8</maven.compiler.target>
 		<jsonschema2pojo.version>1.0.2</jsonschema2pojo.version>
 		<junit.version>5.7.0</junit.version>
-		<assertj.version>3.17.2</assertj.version>
+		<assertj.version>3.27.7</assertj.version>
 		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
